@@ -1,0 +1,141 @@
+﻿
+<div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+        <ul class="layui-nav layui-nav-tree" lay-filter="test">
+            <li class="layui-nav-item">
+                <a class="" href="javascript:;">示例代码</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="javascript:;">列表一</a></dd>
+                    <dd><a href="javascript:;">列表二</a></dd>
+                    <dd><a href="javascript:;">列表三</a></dd>
+                    <dd><a href="">超链接</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a class="layui-method" data-method="contract_publish" onclick="contract_publish()">发布合约</a></li>
+        </ul>
+    </div>
+</div>
+<div class="layui-body">
+    <div id="editor-container" style="font-size: 18pt; height: 100%;width: 100%"></div>
+</div>
+<div id="contract-publish" class="layui-form" style="display: none; padding: 10px">
+    <div class="layui-form-item">
+        <label class="layui-form-label">合约大小</label>
+        <div class="layui-form-mid"><label id="contract_lenght">0</label></div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">发布到</label>
+        <div class="layui-input-block">
+            <input type="radio" name="net" value="test" title="测试链" checked="">
+            <input type="radio" name="net" value="main" title="正式链">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">发布者私钥</label>
+        <div class="layui-input-block">
+            <input type="text" id="privkey" lay-verify="required" placeholder="请输入私钥" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">合约描述</label>
+        <div class="layui-input-block">
+            <input type="text" id="desc" lay-verify="required" placeholder="" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">手续费</label>
+        <div class="layui-input-block" style="width: 100px;">
+            <input type="text" id="fee" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value="110000000">
+        </div>
+    </div>
+
+</div>
+
+@section scripts
+    {
+    <script type="text/javascript">
+        var require = {
+            baseUrl: window.location.protocol + "//" + window.location.host,
+            paths: {
+                ace: "lib/ace",
+                wicc: "lib/wicc/wicc"
+            },
+            waitSeconds: 30
+        };
+    </script>
+    <script src="~/ide/kitchen-sink/require.js" data-main="./ide/kitchen-sink/demo" type="text/javascript"></script>
+    <script src="~/lib/wicc/wicc.js" type="text/javascript"></script>
+    <script>
+        layui.use('layer', 'form', 'layedit', function () {
+            var $ = layui.jquery, layer = layui.layer, layedit = layui.layedit, form = layui.form;
+            form.render();
+        });
+
+        function contract_publish() {
+
+            var contract = env.editor.getValue();
+            $('#contract_lenght').html(contract.length);
+            layui.contract = contract;
+
+            layui.use('form', function () {
+                var form = layui.form;
+                form.render();
+                layer.open({
+                    type: 1,
+                    title: '合约发布',
+                    area: ['600px', '400px'],
+                    content: $('#contract-publish'),
+                    btn: ['发布'],
+                    btnAlign: 'c',
+                    yes: function () {
+                        var index = layer.msg('正在提交代码，请稍候', { icon: 16, time: false, shade: 0.8 });
+                        $.ajax({
+                            type: 'post',
+                            url: "/Contract/Publish",
+                            //dataType: 'jsonp',
+                            //jsonp: "callbackparam",
+                            data: JSON.stringify({
+                                Net: $('[name=net]:checked').val(),
+                                Fee: $('#fee').val(),
+                                Desc: $('#desc').val(),
+                                Contract: layui.contract,
+                                PrivKey: $('#privkey').val()
+                            }),
+                            contentType: "application/json; charset=utf-8",
+                            success: function (res) {
+                                layer.close(index);
+                                layer.open({
+                                    title: '发布' + (res.success ? "成功" : "失败")
+                                    , content: res.data
+                                });
+                            },
+                            error: function (e, m) {
+                                layer.close(index);
+                                layer.open({
+                                    type: 1,
+                                    offset: "auto"
+                                    , content: m
+                                    , btn: '确定'
+                                    , btnAlign: 'c' //按钮居中
+                                    , shade: 0 //不显示遮罩
+                                    , yes: function () {
+                                        layer.closeAll();
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+        }
+
+    </script>
+    @*YBUb5WMKWeSK7tTwPpuCvm1wkX2Pd3p3yFBumMbSdfrFwsbPwxEz*@
+    @*Y9dsh76E1LowjWgim9CMBni6dpPqpejneGsnBrksADweK31MVx1t*@
+}
+
+@section stylesheet
+    {
+    @*<link rel="stylesheet" href="~/ide/kitchen-sink/styles.css" type="text/css" media="screen">*@
+}
+

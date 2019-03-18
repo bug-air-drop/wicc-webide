@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContractIDE", "ContractIDE\ContractIDE.csproj", "{83B9F898-5DFE-487D-A33C-2E6AE04C10F9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NBitcoin.Wicc", "NBitcoin.Wicc\NBitcoin.Wicc.csproj", "{BDCFC034-EC4C-4CA6-A112-F590FF8EFBD9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{83B9F898-5DFE-487D-A33C-2E6AE04C10F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83B9F898-5DFE-487D-A33C-2E6AE04C10F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83B9F898-5DFE-487D-A33C-2E6AE04C10F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83B9F898-5DFE-487D-A33C-2E6AE04C10F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDCFC034-EC4C-4CA6-A112-F590FF8EFBD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDCFC034-EC4C-4CA6-A112-F590FF8EFBD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDCFC034-EC4C-4CA6-A112-F590FF8EFBD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDCFC034-EC4C-4CA6-A112-F590FF8EFBD9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2B8FECFE-C5BE-4241-B2A4-624D41487193}
+	EndGlobalSection
+EndGlobal

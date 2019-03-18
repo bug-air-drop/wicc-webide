@@ -1,0 +1,260 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <UserSecretsId>8aab956e-6d0b-405c-a4a6-3efcc8873403</UserSecretsId>
+    <TypeScriptToolsVersion>3.3</TypeScriptToolsVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\abap.abap" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\abc.abc" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\actionscript.as" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\ada.ada" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\apex.apex" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\asciidoc.asciidoc" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\asl.dsl" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\assembly_x86.asm" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\autohotkey.ahk" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\batchfile.bat" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\bro.bro" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\c9search.c9search_results" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\cirru.cirru" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\clojure.clj" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\cobol.CBL" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\coffee.coffee" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\coldfusion.cfm" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\csharp.cs" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\csound_document.csd" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\csound_orchestra.orc" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\csound_score.sco" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\css.css" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\curly.curly" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\c_cpp.cpp" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\d.d" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\dart.dart" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\diff.diff" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\Dockerfile" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\dot.dot" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\drools.drl" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\edifact.edi" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\eiffel.e" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\ejs.ejs" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\elixir.ex" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\elm.elm" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\erlang.erl" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\forth.frt" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\fortran.f90" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\fsharp.fsi" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\fsl.fsl" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\ftl.ftl" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\gcode.gcode" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\gherkin.feature" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\glsl.glsl" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\gobstones.gbs" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\golang.go" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\graphqlschema.gql" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\groovy.groovy" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\haml.haml" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\handlebars.hbs" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\haskell.hs" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\haskell_cabal.cabal" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\Haxe.hx" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\hjson.hjson" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\htaccess" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\html.html" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\html_elixir.eex" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\html_ruby.erb" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\ini.ini" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\io.io" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\Jack.jack" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\jade.jade" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\java.java" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\javascript.js" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\json.json" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\jsoniq.jq" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\jsp.jsp" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\jssm.jssm" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\jsx.jsx" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\julia.jl" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\kotlin.kt" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\latex.tex" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\less.less" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\liquid.liquid" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\lisp.lisp" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\livescript.ls" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\logiql.logic" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\logtalk.lgt" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\lsl.lsl" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\luapage.lp" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\lucene.lucene" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\Makefile" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\markdown.md" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\mask.mask" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\matlab.matlab" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\maze.mz" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\mel.mel" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\mixal.mixal" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\mushcode.mc" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\mysql.mysql" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\Nix.nix" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\nsis.nsi" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\objectivec.m" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\ocaml.ml" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\pascal.pas" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\perl.pl" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\perl6.p6" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\pgsql.pgsql" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\php.php" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\php_laravel_blade.blade.php" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\pig.pig" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\plaintext.txt" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\powershell.ps1" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\praat.praat" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\prolog.plg" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\properties.properties" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\protobuf.proto" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\puppet.epp" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\python.py" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\r.r" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\razor.cshtml" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\rdoc.Rd" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\red.red" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\rhtml.Rhtml" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\rst.rst" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\ruby.rb" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\rust.rs" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\sass.sass" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\scad.scad" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\scala.scala" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\scheme.scm" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\scss.scss" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\sh.sh" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\sjs.sjs" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\slim.slim" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\smarty.smarty" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\snippets.snippets" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\soy_template.soy" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\space.space" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\sparql.rq" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\sql.sql" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\sqlserver.sqlserver" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\stylus.styl" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\svg.svg" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\swift.swift" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\tcl.tcl" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\terraform.tf" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\tex.tex" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\textile.textile" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\toml.toml" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\tsx.tsx" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\turtle.ttl" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\twig.twig" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\typescript.ts" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\vala.vala" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\vbscript.vbs" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\velocity.vm" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\verilog.v" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\vhdl.vhd" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\visualforce.vfp" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\wollok.wlk" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\xml.xml" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\xquery.xq" />
+    <Content Remove="wwwroot\ide\kitchen-sink\docs\yaml.yaml" />
+    <Content Remove="wwwroot\Pages\Form\ContractPublish.html" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.4.4" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
+    <PackageReference Include="MongoDB.Driver" Version="2.7.3" />
+    <PackageReference Include="NBitcoin" Version="4.1.1.82" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="wwwroot\js\" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Include="wwwroot\lib\wicc\address.js" />
+    <None Include="wwwroot\lib\wicc\aes-cbc.js" />
+    <None Include="wwwroot\lib\wicc\block\block.js" />
+    <None Include="wwwroot\lib\wicc\block\blockheader.js" />
+    <None Include="wwwroot\lib\wicc\block\index.js" />
+    <None Include="wwwroot\lib\wicc\block\merkleblock.js" />
+    <None Include="wwwroot\lib\wicc\crypto\bn.js" />
+    <None Include="wwwroot\lib\wicc\crypto\ecdsa.js" />
+    <None Include="wwwroot\lib\wicc\crypto\hash.js" />
+    <None Include="wwwroot\lib\wicc\crypto\point.js" />
+    <None Include="wwwroot\lib\wicc\crypto\random.js" />
+    <None Include="wwwroot\lib\wicc\crypto\signature.js" />
+    <None Include="wwwroot\lib\wicc\encoding\base58.js" />
+    <None Include="wwwroot\lib\wicc\encoding\base58check.js" />
+    <None Include="wwwroot\lib\wicc\encoding\bufferreader.js" />
+    <None Include="wwwroot\lib\wicc\encoding\bufferwriter.js" />
+    <None Include="wwwroot\lib\wicc\encoding\varint.js" />
+    <None Include="wwwroot\lib\wicc\errors.js" />
+    <None Include="wwwroot\lib\wicc\errors\index.js" />
+    <None Include="wwwroot\lib\wicc\errors\spec.js" />
+    <None Include="wwwroot\lib\wicc\hdprivatekey.js" />
+    <None Include="wwwroot\lib\wicc\hdpublickey.js" />
+    <None Include="wwwroot\lib\wicc\mnemonic.js" />
+    <None Include="wwwroot\lib\wicc\networks.js" />
+    <None Include="wwwroot\lib\wicc\opcode.js" />
+    <None Include="wwwroot\lib\wicc\pbkdf2.js" />
+    <None Include="wwwroot\lib\wicc\privatekey.js" />
+    <None Include="wwwroot\lib\wicc\publickey.js" />
+    <None Include="wwwroot\lib\wicc\script\index.js" />
+    <None Include="wwwroot\lib\wicc\script\interpreter.js" />
+    <None Include="wwwroot\lib\wicc\script\script.js" />
+    <None Include="wwwroot\lib\wicc\transaction\commontx.js" />
+    <None Include="wwwroot\lib\wicc\transaction\contracttx.js" />
+    <None Include="wwwroot\lib\wicc\transaction\delegatetx.js" />
+    <None Include="wwwroot\lib\wicc\transaction\index.js" />
+    <None Include="wwwroot\lib\wicc\transaction\input\index.js" />
+    <None Include="wwwroot\lib\wicc\transaction\input\input.js" />
+    <None Include="wwwroot\lib\wicc\transaction\input\multisig.js" />
+    <None Include="wwwroot\lib\wicc\transaction\input\multisigscripthash.js" />
+    <None Include="wwwroot\lib\wicc\transaction\input\publickey.js" />
+    <None Include="wwwroot\lib\wicc\transaction\input\publickeyhash.js" />
+    <None Include="wwwroot\lib\wicc\transaction\output.js" />
+    <None Include="wwwroot\lib\wicc\transaction\registeraccounttx.js" />
+    <None Include="wwwroot\lib\wicc\transaction\registerapptx.js" />
+    <None Include="wwwroot\lib\wicc\transaction\sighash.js" />
+    <None Include="wwwroot\lib\wicc\transaction\sighashwitness.js" />
+    <None Include="wwwroot\lib\wicc\transaction\signature.js" />
+    <None Include="wwwroot\lib\wicc\transaction\transaction.js" />
+    <None Include="wwwroot\lib\wicc\transaction\unspentoutput.js" />
+    <None Include="wwwroot\lib\wicc\unit.js" />
+    <None Include="wwwroot\lib\wicc\uri.js" />
+    <None Include="wwwroot\lib\wicc\util\betitem.js" />
+    <None Include="wwwroot\lib\wicc\util\buffer.js" />
+    <None Include="wwwroot\lib\wicc\util\js.js" />
+    <None Include="wwwroot\lib\wicc\util\preconditions.js" />
+    <None Include="wwwroot\lib\wicc\util\util.js" />
+    <None Include="wwwroot\lib\wicc\util\votefund.js" />
+    <None Include="wwwroot\lib\wicc\util\writerhelper.js" />
+    <None Include="wwwroot\lib\wicc\wiccapi.js" />
+    <None Include="wwwroot\lib\wicc\words\chinese.js" />
+    <None Include="wwwroot\lib\wicc\words\english.js" />
+    <None Include="wwwroot\lib\wicc\words\french.js" />
+    <None Include="wwwroot\lib\wicc\words\index.js" />
+    <None Include="wwwroot\lib\wicc\words\italian.js" />
+    <None Include="wwwroot\lib\wicc\words\japanese.js" />
+    <None Include="wwwroot\lib\wicc\words\spanish.js" />
+    <None Include="wwwroot\Pages\Form\ContractPublish.html" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\NBitcoin.Wicc\NBitcoin.Wicc.csproj" />
+  </ItemGroup>
+
+</Project>

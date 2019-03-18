@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyVersion>0.0.0.1</AssemblyVersion>
+    <FileVersion>0.0.0.1</FileVersion>
+    <Description>用于WaykiChain维基链的,基于NBitcoin的签名库</Description>
+    <PackageProjectUrl>https://github.com/GitHubbard/NBitcoin.Wicc</PackageProjectUrl>
+    <Authors>GitHubbard</Authors>
+    <PackageLicenseUrl>https://github.com/GitHubbard/NBitcoin.Wicc/blob/master/LICENSE</PackageLicenseUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <ApplicationIcon>bitbug_favicon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NBitcoin" Version="4.1.1.75" />
+  </ItemGroup>
+
+</Project>
