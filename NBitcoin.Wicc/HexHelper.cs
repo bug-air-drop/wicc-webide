@@ -23,8 +23,6 @@ namespace NBitcoin.Wicc
                 sb.Append(item.ToString("x2"));
             }
 
-            bytes.
-
             return sb.ToString();
         }
     }

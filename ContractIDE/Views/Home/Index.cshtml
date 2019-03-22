@@ -11,7 +11,8 @@
                     <dd><a href="">超链接</a></dd>
                 </dl>
             </li>
-            <li class="layui-nav-item"><a class="layui-method" data-method="contract_publish" onclick="contract_publish()">发布合约</a></li>
+            <li class="layui-nav-item"><a class="layui-method"  onclick="contract_publish()">发布合约</a></li>
+            <li class="layui-nav-item"><a class="layui-method"  onclick="contract_dynload()">测试代码</a></li>
         </ul>
     </div>
 </div>
@@ -33,7 +34,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">发布者私钥</label>
         <div class="layui-input-block">
-            <input type="text" id="privkey" lay-verify="required" placeholder="请输入私钥" autocomplete="off" class="layui-input">
+            <input type="text" id="privkey" lay-verify="required" placeholder="请输入私钥" autocomplete="off" class="layui-input" value="Y9dsh76E1LowjWgim9CMBni6dpPqpejneGsnBrksADweK31MVx1t">
         </div>
     </div>
     <div class="layui-form-item">
@@ -48,8 +49,23 @@
             <input type="text" id="fee" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value="110000000">
         </div>
     </div>
-
 </div>
+
+<div id="contract-dynload" class="layui-form" style="display: none; padding: 10px">
+    <div class="layui-form-item">
+        <label class="layui-form-label">调用私钥</label>
+        <div class="layui-input-block">
+            <input type="text" id="dyn_privkey" lay-verify="required" placeholder="请输入私钥" autocomplete="off" class="layui-input" value="Y9dsh76E1LowjWgim9CMBni6dpPqpejneGsnBrksADweK31MVx1t">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">手续费</label>
+        <div class="layui-input-block" style="width: 100px;">
+            <input type="text" id="dyn_fee" lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value="100000">
+        </div>
+    </div>
+</div>
+
 
 @section scripts
     {
@@ -106,6 +122,59 @@
                                 layer.close(index);
                                 layer.open({
                                     title: '发布' + (res.success ? "成功" : "失败")
+                                    , content: res.data
+                                });
+                            },
+                            error: function (e, m) {
+                                layer.close(index);
+                                layer.open({
+                                    type: 1,
+                                    offset: "auto"
+                                    , content: m
+                                    , btn: '确定'
+                                    , btnAlign: 'c' //按钮居中
+                                    , shade: 0 //不显示遮罩
+                                    , yes: function () {
+                                        layer.closeAll();
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+        }
+
+        function contract_dynload() {
+
+            var contract = env.editor.getValue();
+            layui.contract = contract;
+
+            layui.use('form', function () {
+                var form = layui.form;
+                form.render();
+                layer.open({
+                    type: 1,
+                    title: '代码测试',
+                    area: ['600px', '400px'],
+                    content: $('#contract-dynload'),
+                    btn: ['发送'],
+                    btnAlign: 'c',
+                    yes: function () {
+                        var index = layer.msg('正在提交代码，请稍候', { icon: 16, time: false, shade: 0.8 });
+                        $.ajax({
+                            type: 'post',
+                            url: "/Contract/DynLoad",
+                            data: JSON.stringify({
+                                Fee: $('#dyn_fee').val(),
+                                Contract: layui.contract,
+                                PrivKey: $('#dyn_privkey').val()
+                            }),
+                            contentType: "application/json; charset=utf-8",
+                            success: function (res) {
+                                layer.close(index);
+                                layer.open({
+                                    title: '返回'
                                     , content: res.data
                                 });
                             },

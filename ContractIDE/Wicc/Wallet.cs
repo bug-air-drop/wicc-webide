@@ -82,6 +82,30 @@ namespace WalletServiceApi
             return str;
         }
 
+        public string CreateContractTxRaw(string scriptRegId, byte[] contract, ulong fees, uint blockHeight)
+        {
+            var secret = new BitcoinSecret(Prikey, Network);
+            var key = Key.Parse(secret.ToWif(), Network);
+            var tx = new ContractTx()
+            {
+                Fees = fees,
+                Contract = new VarString(contract),
+                ValidHeight = (ulong)blockHeight,
+                SrcId = this.UserId,
+                DesId = new UserId(uint.Parse(scriptRegId.Split('-')[0]), uint.Parse(scriptRegId.Split('-')[1])),
+                Values = 0
+            };
+
+            tx.SignByKey(key);
+
+            var ms = new MemoryStream();
+            var bs = new BitcoinStream(ms, true) { Type = SerializationType.Hash };
+            bs.ReadWrite(tx);
+
+            var str = HexHelper.ToHexString(ms.ToArray());
+            return str;
+        }
+
         public string CreateCommonTxRaw(UserId toAddress, ulong fees, ulong amount, uint blockHeight)
         {
             var secret = new BitcoinSecret(Prikey, Network);

@@ -23,7 +23,7 @@ namespace ContractIDE.Controllers
         {
             var resault = new BaseRsp<string>();
             var net = model.Net == "test" ? NBitcoin.Wicc.Wicc.Instance.Testnet : NBitcoin.Wicc.Wicc.Instance.Mainnet;
-            var apiUrl = "http://rpc.wic.me/jsonrpc/" + model.Net;
+            var apiUrl = "http://rpc.5.me/jsonrpc/" + model.Net;
 
             BitcoinPubKeyAddress address = null;
 
@@ -83,6 +83,90 @@ namespace ContractIDE.Controllers
                 if (!submittx.success)
                 {
                     resault.data = "上链失败: " + submittx.msg;
+                    return resault;
+                }
+                else
+                {
+                    resault.data = "交易哈希: " + submittx.data.hash;
+                    resault.success = true;
+                    return resault;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                resault.data = "签名失败: " + ex.Message;
+                return resault;
+            }
+
+
+            resault.success = false;
+            resault.data = "发布失败";
+
+            return resault;
+        }
+
+        [HttpPost("DynLoad")]
+        public BaseRsp<string> DynLoad(Models.ContractDynLoadModel model)
+        {
+            var resault = new BaseRsp<string>();
+            var apiUrl = "http://rpc.5.me/jsonrpc/test";
+
+            BitcoinPubKeyAddress address = null;
+
+            try
+            {
+                var secret = new BitcoinSecret(model.PrivKey, NBitcoin.Wicc.Wicc.Instance.Testnet);
+                address = secret.GetAddress();
+            }
+            catch
+            {
+                resault.data = "提供的私钥有误, 请检查私钥或网络";
+                return resault;
+            }
+
+            var accountInfo = HttpGet(apiUrl + "/GetAccountInfo/" + address.ToString());
+
+            if (accountInfo == null)
+            {
+                resault.data = "RPC钱包服务暂时不可用";
+                return resault;
+            }
+
+            var regId = accountInfo.data.regID?.ToString();
+
+            if (string.IsNullOrEmpty(regId))
+            {
+                resault.data = "该地址未激活";
+                return resault;
+            }
+            else if (long.Parse(accountInfo.data.balance.ToString()) < long.Parse(model.Fee))
+            {
+                resault.data = "该地址当前余额不足以支付手续费";
+                return resault;
+            }
+
+            WalletServiceApi.Wallet wt = new WalletServiceApi.Wallet()
+            {
+                Network = NBitcoin.Wicc.Wicc.Instance.Testnet,
+                Prikey = model.PrivKey,
+                UserId = new UserId(uint.Parse(regId.Split('-')[0]), uint.Parse(regId.Split('-')[1]))
+            };
+
+            var height = HttpGet(apiUrl + "/GetBlockCount");
+
+            try
+            {
+                List<byte> codes = new List<byte>() { 0xdd, 0xdd };
+                codes.AddRange(Encoding.UTF8.GetBytes(model.Contract));
+
+                var sign = wt.CreateContractTxRaw("74505-1", codes.ToArray(), ulong.Parse(model.Fee), uint.Parse(height.data.ToString()));
+
+                var submittx = HttpPost<dynamic>(apiUrl + "/SubmitTx", "\"" + sign + "\"");
+
+                if (!submittx.success)
+                {
+                    resault.data = submittx.msg;
                     return resault;
                 }
                 else
